@@ -1,14 +1,41 @@
-To Use:
-Step 1: Clone the repo in your code editor
+# Quotes by Goats
 
-Step 2:
-/ In Terminal /
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+---
+
+### Step 2: Start the Backend
+
+Open a terminal and run:
+
+```bash
 cd backend
-npm i
+npm install
 npm run dev
-/ Open Another Terminal /
-cd frontend
-npm i
-npm run dev
+```
 
-Step 3: You can use "Quotes by Goats"
+---
+
+### Step 3: Start the Frontend
+
+Open another terminal and run:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+### Step 4: Use the App
+
+After both servers are running, open the frontend URL shown in the terminal
+
+You can now use **Quotes by Goats** 🐐
