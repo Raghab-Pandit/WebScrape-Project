@@ -1,22 +1,17 @@
-const express= require('express');
+import express from "express";
+import { pupFunc } from "./puppeteer/puppeteer.js";
+import cors from 'cors'
 const PORT= process.env.PORT || 3000;
 const app= express();
 
-const Puppeteer= require('puppeteer');
-
-let Data=[];
-
-const pupFunc= async ()=>{
-    const browser= await Puppeteer.launch({headless: false});
-    const page= await browser.newPage()
-    await page.goto('https://quotes.toscrape.com/')
-
-    await page.click('nav ul li a')
-    await page.click('nav ul li a')
-}
+app.use(cors())
 
 app.get('/', (req, res)=>{
     res.json('Hello! Express Here')
+})
+
+app.get('/quotes', async (req, res)=>{
+    res.send(await pupFunc())
 })
 
 app.listen(PORT, ()=>{
