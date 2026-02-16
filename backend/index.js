@@ -10,7 +10,7 @@ app.get('/', (req, res)=>{
     res.json('Hello! Express Here')
 })
 
-app.get('/quotes', async (req, res)=>{
+app.get('/news', async (req, res)=>{
     res.send(await pupFunc())
 })
 
