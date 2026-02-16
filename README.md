@@ -1,4 +1,4 @@
-# News24
+# NewsNet24
 
 
 ### Step 1: Clone the Repository
