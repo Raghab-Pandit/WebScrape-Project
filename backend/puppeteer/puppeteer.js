@@ -2,30 +2,33 @@ import puppeteer from "puppeteer";
 
 export const pupFunc= async ()=> {
     const browser= await puppeteer.launch();
-    const page= await browser.newPage();
+    const page= await browser.newPage(); 
+    const sites=[{source:'NYTimes', link:"https://www.nytimes.com/athletic/"}, {source:'BBC',link:"https://www.bbc.com/sport"}]
+    let totalNews= [];
 
-    let totalQuotes= [];
+    for(const site of sites){
+        let selector;
+        if(site.source==='BBC'){
+            selector= 'div:nth-child(2) div:first-child div:first-child div:nth-child(2) div:first-child main#main-content div:nth-child(4) div:first-child div:first-child div:first-child div:first-child div:first-child div:first-child div:first-child h3 a span p span'
+        }
+        else if(site.source==='NYTimes'){
+            selector= 'div:first-child div:first-child div:nth-child(2) main div:first-child div:nth-child(3) div:first-child div:first-child div:first-child div:first-child div:nth-child(2) div:first-child div div:first-child a div:first-child span:first-child div:first-child div:first-child div:first-child p'
+         }
+        await page.goto(site.link)
+        await page.waitForSelector(selector)
+        const News= await page.evaluate((site, selector)=>{
 
-    for(let i=0;i<=10;i++){
+            const newsz= document.querySelectorAll(selector)
 
-        await page.goto(`https://quotes.toscrape.com/page/${i}/`)
-//    await page.screenshot({ path: 'operation.jpeg' })
+            const info =[...newsz].map((news)=>({
+                source: site.source,
+                headline: news?.innerText || '',
+            }))
 
-    let Quotes= await page.evaluate( ( ) =>{
-        const pgTag= document.querySelectorAll(".container .row .col-md-8 .quote");
+            return info
+        }, site, selector)
 
-        const quot= [...pgTag].map(tags => ({
-            Quote: tags.querySelector('span.text')?.innerText || '',
-            Author: tags.querySelector('small.author')?.innerText || '',
-            Tag: [...tags.querySelectorAll('.tags a')].map(tag => tag.innerText)
-        }));
-        return quot;
-
-    })
-
-    totalQuotes= [...totalQuotes, ...Quotes]
+        totalNews=[...totalNews, ...News]
 }
-
-    await browser.close()
-    return totalQuotes
+    return totalNews;
 }
