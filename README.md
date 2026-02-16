@@ -1,4 +1,4 @@
-# Quotes by Goats
+# News24
 
 
 ### Step 1: Clone the Repository
