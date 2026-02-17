@@ -4,7 +4,7 @@
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/WebScrape-Project.git
+git clone https://github.com/Raghab-Pandit/WebScrape-Project.git
 cd WebScrape-Project
 ```
 
