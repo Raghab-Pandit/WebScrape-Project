@@ -4,7 +4,7 @@
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/WebScrape-Project.git
+git clone https://github.com/Raghab-Pandit/WebScrape-Project.git
 cd WebScrape-Project
 ```
 
@@ -37,5 +37,3 @@ npm run dev
 ### Step 4: Use the App
 
 After both servers are running, open the frontend URL shown in the terminal
-
-You can now use **Quotes by Goats** 🐐

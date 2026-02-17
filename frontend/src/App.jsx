@@ -28,11 +28,12 @@ const App = () => {
       {news.map((newz, i)=>{
         if(newz){
           return(
-    <div key={i} className="w-70 text-center text-white font-semibold text-2xl flex flex-col justify-between border-4 border-[#99E1D9] rounded-2xl">
+    <div key={i} className="group w-70 text-center text-white font-semibold text-2xl flex flex-col justify-between border-4 border-[#99E1D9] rounded-2xl">
         <div className="p-3 space-x-2">
-        <span>
+        <a href={newz.link} target='_blank'>
           {newz.headline}
-        </span>  
+        </a> 
+        <br/>
         </div>  
         <div className="bg-[#99E1D9] text-black">
           -{newz.source}-
